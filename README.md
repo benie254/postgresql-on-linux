@@ -8,7 +8,7 @@ A guide for installing, setting up, and using PostgreSQL on Linux (Ubuntu).
 
 ## What You Should Know About PostgreSQL on Ubuntu
 
-According to the official [PostgreSQL documentation](https://www.postgresql.org/download/linux/ubuntu/), PostgreSQL is by default available and supported by all Ubuntu versions. It is one of the reasons why I recommend using this RDBMS over any other open source (RDBMS) options on Ubuntu. Nonetheless, you may have your personal preference/favorite for different reasons.
+According to the official [PostgreSQL download page](https://www.postgresql.org/download/linux/ubuntu/), PostgreSQL is by default available and supported by all Ubuntu versions. It is one of the reasons why I recommend using this RDBMS over any other open source (RDBMS) options on Ubuntu. Nonetheless, you may have your personal preference/favorite for different reasons.
 
 ## Installing PostgreSQL on Linux (Ubuntu)
 
@@ -16,7 +16,7 @@ Let's get to it, shall we?
 
 1. Open your terminal 
 
-2. According to the official [PostgreSQL documentation](https://www.postgresql.org/download/linux/ubuntu/), you should run the following command:
+2. According to the official [PostgreSQL download page](https://www.postgresql.org/download/linux/ubuntu/), you should run the following command:
 
     ```
     apt install postgresql
@@ -33,7 +33,7 @@ Let's get to it, shall we?
 
         ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/0a2ff42b-09d6-4161-b04c-1efcdc98d784)
 
-3. Explore more ways to install postgreSQL on Ubuntu for automatic updates throughout the support lifetime of PostgreSQL in the official [PostgeSQL documentation](https://www.postgresql.org/download/linux/ubuntu/)
+3. Explore more ways to install postgreSQL on Ubuntu for automatic updates throughout the support lifetime of PostgreSQL in the official [PostgeSQL download page](https://www.postgresql.org/download/linux/ubuntu/)
 
 ## Setting Up PostgreSQL
 
