@@ -4,7 +4,7 @@ A guide for installing, setting up, and using PostgreSQL on Linux (Ubuntu).
 
 # What is PostgreSQL
 
-[PostgreSQL](https://www.postgresql.org/) is a Relational Database Management System **(RDBMS)** that enables you to organize, store, and manage data in structured objects with tables and allows relationships between these tables. 
+[PostgreSQL](https://www.postgresql.org/) is a Relational Database Management System **(RDBMS)** that enables you to organize, store, and manage data in structured objects with tables and allows relationships between these tables.
 
 ## What You Should Know About PostgreSQL on Ubuntu
 
@@ -12,26 +12,27 @@ According to the official [PostgreSQL download page](https://www.postgresql.org/
 
 ## Installing PostgreSQL on Linux (Ubuntu)
 
-Let's get to it, shall we? 
+Let's get to it, shall we?
 
-1. Open your terminal 
+1. Open your terminal
 
 2. According to the official [PostgreSQL download page](https://www.postgresql.org/download/linux/ubuntu/), you should run the following command:
 
-    ```
-    apt install postgresql
-    ```
+   ```
+   apt install postgresql
+   ```
 
-    - But you may run into a **Permission denied** error: 
-    
-        ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/644d8d1f-e5a7-4da2-9246-65cf05c9b8c0)
+- But you may run into a **Permission denied** error:
 
-    - In that case, run the command as a superuser with `sudo`:
-        ```
-        sudo apt install postgresql
-        ```
+  ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/644d8d1f-e5a7-4da2-9246-65cf05c9b8c0)
 
-        ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/0a2ff42b-09d6-4161-b04c-1efcdc98d784)
+- In that case, run the command as a superuser with `sudo`:
+
+  ```
+  sudo apt install postgresql
+  ```
+
+  ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/0a2ff42b-09d6-4161-b04c-1efcdc98d784)
 
 3. Explore more ways to install postgreSQL on Ubuntu for automatic updates throughout the support lifetime of PostgreSQL in the official [PostgeSQL download page](https://www.postgresql.org/download/linux/ubuntu/)
 
@@ -43,64 +44,103 @@ Let's get to it, shall we?
 
 1. Switch to the **PostgreSQL Server** by running the following command on your terminal:
 
-    ```
-    sudo -i -u postgres
-    ```
-    ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/e2569a8a-9ac9-43b4-9423-165d68548c33)
+   ```
+   sudo -i -u postgres
+   ```
+
+   ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/e2569a8a-9ac9-43b4-9423-165d68548c33)
 
 2. To create a user with a password, run the following command **(also see option 3 below)**:
 
-    ```
-    createuser NameOfUserHere -P
-    ```
+   ```
+   createuser NameOfUserHere -P
+   ```
 
-    - Replace **NameOfUserHere** with your preferred name for the new user.
-    - You will be prompted to enter a **password** for the new user and confirm it.
-    - When you're done creating the new user, type `exit` and press `ENTER` to exit the **postgres** server.
+- Replace **NameOfUserHere** with your preferred name for the new user.
+- You will be prompted to enter a **password** for the new user and confirm it.
+- When you're done creating the new user, type `exit` and press `ENTER` to exit the **postgres** server.
 
-        ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/e5faf676-23ea-434d-b6fe-70276235d6e3)
+  ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/e5faf676-23ea-434d-b6fe-70276235d6e3)
 
 3. An alternative **(recommended)** approach is to use the --interactive flag.
-    - Run the following command:
 
-        ```
-        createuser -P --interactive
-        ```
+- Run the following command:
 
-    - This will prompt you to enter the following:
-        - Name of the role/user you want to create
-        - The password and password confirmation for this new user
-        - Whether to assign a **superuser** role to this new user (recommended if you haven't created any other user)
+  ```
+  createuser -P --interactive
+  ```
 
-    - When you're done creating the new user, type `exit` and press `ENTER` to exit the **postgres** server.
+- This will prompt you to enter the following:
+  - Name of the role/user you want to create
+  - The password and password confirmation for this new user
+  - Whether to assign a **superuser** role to this new user (recommended if you haven't created any other user)
 
-        ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/9856a932-59f0-441c-9f47-b828c03f6bf1)
+### Creating an Initial Database
 
-### Creating a Database with PostgreSQL
+When you're done creating the new user, you will need to create an initial database that matches the name of your new user. Otherwise, you will not be able to access the `postgreSQL` shell.
 
-After creating a user, you may proceed to create a database.
+![alt text](image.png)
 
-1. Run the following command to open a postgres shell:
+For instance, if above you created a user called `benie`, your initial database should be called `benie`.
 
-    ```
-    psql
-    ```
+Follow the steps below to create your initial database:
 
-    ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/484120cd-6590-466e-8cda-7580465b6bce)
+1. Run the `PostgreSQL` Server
+
+- In case you had terminated your server session, run the following command to restart it:
+
+  ```
+  sudo -i -u postgres
+  ```
+
+2. Create an Initial Database
+
+- Create your initial database using the same name you used for your new user:
+
+  ```
+  createdb NameOfYourNewUserHere;
+  ```
+
+- Replace **NameOfYourNewUserHere** with the name you used to create your new user in (3) above, e.g. `benie`.
+
+  ![alt text](image-1.png)
+
+- Once you've created your initial database, type `exit` and press `ENTER` to exit the **postgres** server.
+
+### Creating Subsequent Databases with PostgreSQL
+
+After creating a user with an initial database, you will have access to the **postgreSQL** shell and may proceed to create more databases.
+
+1. Run the following command to open a postgreSQL shell:
+
+   ```
+   psql
+   ```
+
+   ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/484120cd-6590-466e-8cda-7580465b6bce)
 
 2. Run the following command to create a new database
 
-    ```
-    CREATE DATABASE nameOfYourNewDb;
-    ```
+   ```
+   CREATE DATABASE nameOfYourNewDb;
+   ```
 
-    - Replace **nameOfYourDb** with your preferred name for your database.
-    - Please remember to add a semicolon `;` after each line.
-    - When you've created your new database, type `\q` and press `ENTER` to exit the postgres shell.
+- Replace **nameOfYourDb** with your preferred name for your database.
+- Please remember to add a semicolon `;` after each line.
 
-        ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/aa6b2e15-b124-45f8-b916-bbcabf0e0103)
+  ![image](https://github.com/benie254/postgresql-on-linux/assets/99865051/aa6b2e15-b124-45f8-b916-bbcabf0e0103)
 
-That's it! You've created your first database which you can use locally to store data.
+- When you've created your new database, type `\q` and press `ENTER` to exit the postgres shell.
+
+## Success
+
+That's it! You've successfully:
+
+- Created a postgreSQL user
+- Your initial database
+- Your first subsequent database (after the initial)
+
+You can use always use your subsequent databases locally to store data.
 
 ## PostgreSQL Official Documentation
 
